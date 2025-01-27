@@ -6,7 +6,7 @@ from netmiko import ConnectHandler
 # Replace with your actual device credentials
 DEVICE = {
     'device_type': 'cisco_ios',
-    'host': '192.168.100.123',
+    'host': '192.168.100.222',
     'username': 'cisco_dev_username',
     'password': 'cisco_dev_password',
 }
