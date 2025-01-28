@@ -3,10 +3,10 @@ from ncclient import manager
 from lxml import etree
 
 # Replace with your actual device credentials
-HOST = '192.168.1.1'
+HOST = '192.168.100.222'
 PORT = 22
-USER = 'cisco'
-PASS = 'cisco'
+USER = 'cisco_username'
+PASS = 'cisco_password'
 
 # Define reusable functions for common operations
 def connect_to_device():
