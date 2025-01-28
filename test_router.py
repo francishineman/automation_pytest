@@ -3,6 +3,7 @@
 import pytest
 from netmiko import ConnectHandler
 
+
 # Replace with your actual device credentials
 DEVICE = {
     'device_type': 'cisco_ios',
