@@ -1,4 +1,3 @@
-# framework/cisco.py
 from .device import Device
 
 class CiscoDevice(Device):
