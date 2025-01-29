@@ -78,6 +78,26 @@ class TestCiscoRouterFeatures:
         """Tests the status of a specific interface."""
         interface_status = self.router.get_config(filter_='<interfaces><interface name="GigabitEthernet0/0"/>')
         assert 'oper-status="up"' in str(interface_status)
+    def test_routing_table(self):
+        """Tests the presence of a specific route in the routing table."""
+        routing_table = self.router.get_config(filter_='<ipv4-routing><routes/>')
+        assert 'destination="10.1.1.0"' in str(routing_table)
+
+    def test_bgp_neighbor(self):
+        """Tests the presence of a BGP neighbor."""
+        bgp_neighbors = self.router.get_config(filter_='<neighbors><neighbor><ip>10.1.2.2</ip></neighbor></neighbors>')
+        assert 'remote-as' in str(bgp_neighbors)  # Basic check for BGP neighbor existence
+
+    def test_ospf_process(self):
+        """Tests the existence of an OSPF process."""
+        ospf_config = self.router.get_config(filter_='<router><ospf><process-id>1</process-id></ospf></router>')
+        assert '<process-id>1</process-id>' in str(ospf_config)
+
+    def test_acl(self):
+        """Tests the existence of an access-list."""
+        acl_config = self.router.get_config(filter_='<ip-access-lists><access-list><name>ACL1</name></access-list></ip-access-lists>')
+        assert '<name>ACL1</name>' in str(acl_config)
+
 
 if __name__ == '__main__':
     pytest.main()
